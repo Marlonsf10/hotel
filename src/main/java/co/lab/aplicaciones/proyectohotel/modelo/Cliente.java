@@ -9,6 +9,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -41,8 +43,13 @@ public class Cliente {
     @Column (name = "Correo")
     private String correo;
    
-    //private List<Reserva> reservas;
+    
+    
+    @OneToMany(mappedBy="cliente")
+    private List<Reserva> reservas;
 
+    
+    
     public int getNit() {
         return nit;
     }
@@ -99,20 +106,14 @@ public class Cliente {
         this.correo = correo;
     }
 
-    //public List<Reserva> getReservas() {
-      //  return reservas;
-    //}
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
 
-    //public void setReservas(List<Reserva> reservas) {
-      //  this.reservas = reservas;
-        //comentario
-        //otrocomentario
-    //}
-
-    
-     
-   
-    
-    
+    public void setReservas(List<Reserva> reservas) {
+       this.reservas = reservas;
+        
+    }
+ 
     
 }
